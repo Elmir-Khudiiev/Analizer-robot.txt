@@ -1,0 +1,18 @@
+{
+    "name": "elmir/robots",
+    "description": "Robots.txt analyzer",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elmir Khudiiev",
+            "email": "Elmir1993Elmir@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "classes\\":"classes/"
+        }
+    }
+}
