@@ -8,7 +8,7 @@ class Table
     {
         if($RobotsContent == true) {
             echo '
-            <link rel="stylesheet" href="/components/css/mane.css">
+            <link rel="stylesheet" href="components/css/mane.css">
             <table class="table">
             <tr class="boldtext">
                 <td>№<br></td>
