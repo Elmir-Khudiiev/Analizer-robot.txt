@@ -1,7 +1,5 @@
 <?php
 // Подключаем файлы библиотеки PHPExel
-require_once('classes/PHPExcel.php'); // Подключаем класс для работы с excel
-require_once('classes/PHPExcel/Writer/Excel5.php'); // Подключаем класс для вывода данных в формате excel
 require(__DIR__.'/vendor/autoload.php'); // Файл автозагрузки слассов.
     
 
@@ -22,7 +20,7 @@ unlink(__DIR__.'/temp/robots.txt'); // Удаление временного ф�
 
 $ResponseCode = $Robots->responseCode(); // Код ответа сервера.
 
-session_start();
+session_start(); // Передаем данные через сессию. Даные принимаються в файл Report.php
 $_SESSION['RobotsContent'] = $RobotsContent;
 $_SESSION['SearchHost'] = $SearchHost;
 $_SESSION['SearchSiteMap'] = $SearchSiteMap;

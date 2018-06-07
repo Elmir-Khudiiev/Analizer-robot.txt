@@ -8,22 +8,53 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="components/js/jquery.js"></script>
+    <script type="text/javascript" src="components/js/ajax.js"></script>
     <link rel="stylesheet" href="components/css/mane.css">
   </head>
   <body>
-    <div class="logo">
-      <img src="components/img/Analyzer.png" alt="logo">
-    </div>
-    <div class="robot">
-      <form action="Router.php" method="post">
-        <input class="area" placeholder="Введите вашу ссылку" type="text" name="url">
-        <button type="submit" class="btn btn-primary">Начать проверку</button>
-      </form>
-    </div>
+    <section>
+        <div class="container">
+            <div class="header">
+                <div class="logo">
+                    <a href="/"><img src="components/img/Analyzer.png" alt="logo"></a>
+                </div>
+                <div class="robot">
+                    <p class="prtocol">http(s)://</p>
+                    <form action="Router.php" method="post">
+                        <input class="area" required placeholder="Введите вашу ссылку" type="text" name="url">
+                        <button type="submit" class="btn btn-primary">Начать проверку</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div id="result"></div>
+            <div class="description">
+                <hr>
+                <h1>Сервис для анализа файла Robots.txt</h1>
+                <h5>Список проверок:</h5>
+                <ol>
+                    <li>Проверка наличия файла robots.txt</li>
+                    <li>Проверка указания директивы Host</li>
+                    <li>Проверка количества директив Host, прописанных в файле</li>
+                    <li>Проверка размера файла robots.txt</li>
+                    <li>Проверка указания директивы Sitemap</li>
+                    <li>Проверка кода ответа сервера для файла robots.txt</li>
+                </ol>
+                <h5>После проверки файла, выводится статус и рекомендации для программиста.</h5>
+            </div>
+        </div>
+    </section>
+
+
+
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
