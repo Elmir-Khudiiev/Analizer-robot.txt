@@ -32,12 +32,15 @@ table {
     margin-top: 20px;
 }
 .green {
+    color: white;
     background-color: green;
     text-align: center;
+    font-weight: bold;
 }
 .red {
     background-color: red;
     text-align: center;
+    font-weight: bold;
 }
 .boldtext {
     font-weight: bold;
