@@ -1,6 +1,7 @@
 # Файлы IDE
+
 /.vscode
 
 # Не нужные папки
-/vendor/
-/temp/
+/vendor
+/temp
