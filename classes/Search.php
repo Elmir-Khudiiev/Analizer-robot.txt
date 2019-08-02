@@ -13,13 +13,13 @@ class Search
 
     public function host() // Выполняем поиск Host: в файле robots.txt
     {
-        $sumHost = preg_match('#Host#', $this->robots);
-        return $sumHost;
+        $sum_host = preg_match('#Host#', $this->robots);
+        return $sum_host;
     }
 
     public function siteMap() // Выполняем поиск Sitemap: в файле robots.txt
     {
-        $sumSiteMap = preg_match('#Sitemap:#', $this->robots);
-        return $sumSiteMap;
+        $sum_sitemap = preg_match('#Sitemap:#', $this->robots);
+        return $sum_sitemap;
     }
 }

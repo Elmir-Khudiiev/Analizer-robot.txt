@@ -1,0 +1,164 @@
+html {
+    font-family: 'sans serif';
+}
+
+.container {
+    max-width: 1080px;
+    margin: auto;
+    padding: 0 15px;
+}
+
+section.top-section {
+    margin: 30px 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.robot {
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.robot>form {
+    width: 100%;
+    text-align: right;
+}
+
+input.area {
+    border-radius: 3px;
+    border: 1px solid #adc1d1;
+    padding: 10px 15px;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.55);
+    width: 60%;
+}
+
+button.btn.btn-primary, a.btn.btn-primary {
+    padding: 10px 15px;
+    background-color: #adc1d1;
+    border-radius: 3px;
+    border: 1px solid #6a8094;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.55);
+    font-size: 12px;
+}
+
+a.btn.btn-primary {
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+button.btn.btn-primary {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 30px;
+}
+
+td {
+    border: 1px solid #adc1d1;
+    padding: 5px;
+}
+
+td.green {
+    background-color: green;
+}
+
+td.red {
+    background-color: red;
+}
+
+td.green, td.red {
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+tr.boldtext {
+    background-color: #adc1d1;
+}
+
+td.number {
+    text-align: center;
+}
+
+@media (min-width: 768px) and (max-width: 995px) {
+    input.area {
+        width: 45%;
+    }
+}
+
+@media (max-width: 767px) {
+    .header {
+        justify-content: center;
+    }
+    .robot {
+        width: 100%;
+        margin-top: 20px;
+    }
+    .robot>form {
+        text-align: center;
+    }
+    table {
+        font-size: 12px;
+    }
+    .description hr {
+        display: none;
+    }
+    .description>h1 {
+        text-align: center;
+    }
+    .description > h5 {
+        margin-bottom: 10px;
+        font-size: 16px;
+    }
+    .description {
+        font-size: 14px;
+        line-height: 24px;
+    }
+}
+
+@media (max-width: 520px) {
+    section.top-section {
+        margin: 30px 0 10px;
+    }
+    button.btn.btn-primary, a.btn.btn-primary {
+        display: block;
+    }
+    button.btn.btn-primary {
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 0;
+    }
+    a.btn.btn-primary {
+        text-align: center;
+        margin-top: 10px;
+        margin-right: 0;
+    }
+    input.area {
+        width: -moz-available;
+    }
+    table {
+        display: none;
+    }
+    .logo > a {
+        display: block;
+    }
+    .logo > a > img {
+        width: 100%;
+        height: auto;
+    }
+}

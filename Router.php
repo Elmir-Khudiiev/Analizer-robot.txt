@@ -12,29 +12,33 @@ use classes\Table;
 
 $url = $_POST['url']; // Получаем ссылку с формы.
 
-$Robots = new Robots($url);
-$domaine = $Robots->corectURL();
-$RobotsContent = $Robots->robotsContent(); // Контент в "robots.txt"
+$robots = new Robots($url);
+$domaine = $robots->corectURL();
+$robots_content = $robots->robotsContent(); // Контент в "robots.txt"
 
-$Search = new Search($RobotsContent);
-$SearchHost = $Search->host(); // Поиск Host: в файле "robots.txt"
-$SearchSiteMap = $Search->siteMap(); // Поиск Sitemap: в файле "robots.txt"
+$search = new Search($robots_content);
+$search_host = $search->host(); // Поиск Host: в файле "robots.txt"
+$search_sitemap = $search->siteMap(); // Поиск Sitemap: в файле "robots.txt"
 
-$Size = new Size;
-$RobotSize = $Size->robotSize($RobotsContent, __DIR__.'/temp/robots.txt'); // Проверка веса файла "robots.txt" в (кб).
+$size = new Size;
+if(!is_dir(__DIR__ . '/temp/')) {
+    mkdir(__DIR__ . '/temp/',0700);
+}
+$robotsize = $size->robotSize($robots_content, __DIR__.'/temp/robots.txt'); // Проверка веса файла "robots.txt" в (кб).
 unlink(__DIR__.'/temp/robots.txt'); // Удаление временного файла "robots.txt"
+rmdir(__DIR__.'/temp/');
 
-$ResponseCode = $Robots->responseCode(); // Код ответа сервера.
+$response_code = $robots->responseCode(); // Код ответа сервера.
 
 session_start(); // Передаем данные через сессию. Даные принимаються в файл Report.php
-$_SESSION['RobotsContent'] = $RobotsContent;
-$_SESSION['SearchHost'] = $SearchHost;
-$_SESSION['SearchSiteMap'] = $SearchSiteMap;
-$_SESSION['RobotSize'] = $RobotSize;
-$_SESSION['ResponseCode'] = $ResponseCode;
+$_SESSION['RobotsContent'] = $robots_content;
+$_SESSION['SearchHost'] = $search_host;
+$_SESSION['SearchSiteMap'] = $search_sitemap;
+$_SESSION['RobotSize'] = $robotsize;
+$_SESSION['ResponseCode'] = $response_code;
 
 echo '<a class="btn btn-primary" href="classes/Report.php" role="button">Сохранить отчет</a>'.
 '<a class="btn btn-primary" target="_blank" href="'.$domaine.'" role="button">Просмотреть Robots.txt</a>';
 
-$Table = new Table;
-$Table->viewTable($RobotsContent, $SearchHost, $RobotSize, $SearchSiteMap, $ResponseCode); // Выводит результат на екран.
+$table = new Table;
+$table->viewTable($robots_content, $search_host, $robotsize, $search_sitemap, $response_code); // Выводит результат на екран.

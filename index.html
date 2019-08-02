@@ -1,28 +1,24 @@
 <!doctype html>
-<html lang="en">
-  <head>
+<html lang="ru">
+
+<head>
     <title>Анализаток "Robots.txt"</title>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script type="text/javascript" src="components/js/jquery.js"></script>
-    <script type="text/javascript" src="components/js/ajax.js"></script>
-    <link rel="stylesheet" href="components/css/mane.css">
-  </head>
-  <body>
-    <section>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <section class="top-section">
         <div class="container">
             <div class="header">
                 <div class="logo">
-                    <a href="/"><img src="components/img/Analyzer.png" alt="logo"></a>
+                    <a href="/"><img src="assets/img/Analyzer.png" alt="logo"></a>
                 </div>
                 <div class="robot">
-                    <p class="prtocol">http(s)://</p>
                     <form action="Router.php" method="post">
-                        <input class="area" required placeholder="Введите вашу ссылку" type="text" name="url">
+                        <input class="area" required placeholder="Вставьте вашу ссылку" type="text" name="url">
                         <button type="submit" class="btn btn-primary">Начать проверку</button>
                     </form>
                 </div>
@@ -44,18 +40,14 @@
                     <li>Проверка указания директивы Sitemap</li>
                     <li>Проверка кода ответа сервера для файла robots.txt</li>
                 </ol>
-                <h5>После проверки файла, выводится статус и рекомендации для программиста.</h5>
+                <h5>После проверки файла, выводится статус и рекомендации.</h5>
             </div>
         </div>
     </section>
 
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/ajax.js"></script>
 
+</body>
 
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
 </html>
