@@ -1,6 +1,6 @@
 ## Analyzer "Robots.txt"
 
-####Код в действии: [Analyzer Robots.txt](https://analizer-robots.herokuapp.com/)
+#### Код в действии: [Analyzer Robots.txt](https://analizer-robots.herokuapp.com/)
 ___
 
 **Функции скрипта:**  
