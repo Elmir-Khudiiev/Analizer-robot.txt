@@ -1,7 +1,7 @@
-# Файлы IDE
-
+# IDE files
 /.vscode
+/.idea
 
-# Не нужные папки
+# Unnecessary folders
 /vendor
 /temp

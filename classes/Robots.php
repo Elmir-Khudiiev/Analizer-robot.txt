@@ -2,44 +2,87 @@
 
 namespace classes;
 
+/**
+ * Class Robots
+ * @package classes
+ */
 class Robots
 {
+    /**
+     * @var string
+     */
     public $url;
 
-    public function __construct($url)
+    /**
+     * Robots constructor.
+     *
+     * @param $url
+     */
+    public function __construct(string $url)
     {
         $this->url = $url;
     }
 
-    public function corectURL() // Валидируем введенные ссылки.
+    /**
+     * Link validation
+     *
+     * @return string
+     */
+    public function getCorrectURL(): string
     {
-        // Опредиляем введен ли протокол передачи.
-        $corectURL = preg_match('#http#', $this->url);
-        if($corectURL == 0) {
-            $this->url = 'http://'.$this->url;
+        // Determine if the transfer protocol has been introduced.
+        $getCorrectURL = false !== strpos($this->url, "http");
+
+        if (empty($getCorrectURL)) {
+            $this->url = 'https://' . $this->url;
         }
 
-        // Определяем домен
+        // Determine the domain
         $segment = explode('/', $this->url);
-        $this->url = 'http://'.$segment[2].'/robots.txt';
+        $this->url = 'https://' . $segment[2] . '/robots.txt';
 
         return $this->url;
     }
 
-    public function robotsContent() // Получаем все данные с Robots.txt
+    /**
+     * Returns the content of the "robots.txt" file
+     *
+     * @return bool|string
+     */
+    public function getRobotsContent()
     {
-        $curl = curl_init($this->corectURL());
+        $curl = curl_init($this->getCorrectURL());
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        $robots = curl_exec($curl);
 
-        return $robots;
+        return curl_exec($curl);
     }
 
-    public function responseCode() // Получаем код ответа сервера.
+    /**
+     * Get the server response code.
+     *
+     * @return int
+     */
+    public function getResponseServerCode(): int
     {
-        $headers = get_headers($this->corectURL());
+        $headers = get_headers($this->getCorrectURL());
         $code = explode(' ', $headers[0]);
 
         return $code[1];
+    }
+
+
+    /**
+     * @param string $content
+     * @param string $fileDirection
+     *
+     * @return float
+     */
+    public function getRobotSize(string $content, string $fileDirection): float
+    {
+        $robot = fopen($fileDirection, 'wb');
+        fwrite($robot, $content);
+        fclose($robot);
+
+        return round(filesize($fileDirection) / 1024, 3);
     }
 }

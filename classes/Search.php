@@ -2,24 +2,43 @@
 
 namespace classes;
 
+/**
+ * Class Search
+ * @package classes
+ */
 class Search
 {
-    public $robots;
+    /**
+     * @var string
+     */
+    public $robotsContent;
 
-    public function __construct($robots)
+    /**
+     * Search constructor.
+     * @param $robotsContent
+     */
+    public function __construct(string $robotsContent)
     {
-        $this->robots = $robots;
+        $this->robotsContent = $robotsContent;
     }
 
-    public function host() // Выполняем поиск Host: в файле robots.txt
+    /**
+     * Number of "Host" values in "robots.txt"
+     *
+     * @return int
+     */
+    public function getHost(): int
     {
-        $sum_host = preg_match('#Host#', $this->robots);
-        return $sum_host;
+        return substr_count('Host:', $this->robotsContent);
     }
 
-    public function siteMap() // Выполняем поиск Sitemap: в файле robots.txt
+    /**
+     * Number of "Sitemap" in "robots.txt"
+     *
+     * @return int
+     */
+    public function siteMap(): int
     {
-        $sum_sitemap = preg_match('#Sitemap:#', $this->robots);
-        return $sum_sitemap;
+        return substr_count('Sitemap:', $this->robotsContent);
     }
 }

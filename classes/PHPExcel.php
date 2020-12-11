@@ -3,7 +3,7 @@
 
 /** PHPExcel root directory */
 if (!defined('PHPEXCEL_ROOT')) {
-    define('PHPEXCEL_ROOT', dirname(__FILE__) . '/');
+    define('PHPEXCEL_ROOT', __DIR__ . '/');
     require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
 }
 
@@ -364,7 +364,7 @@ class PHPExcel
      */
     public function __construct()
     {
-        $this->uniqueID = uniqid();
+        $this->uniqueID = uniqid('', true);
         $this->calculationEngine = new PHPExcel_Calculation($this);
 
         // Initialise worksheet collection and add one worksheet

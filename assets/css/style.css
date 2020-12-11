@@ -1,5 +1,5 @@
 html {
-    font-family: 'sans serif';
+    font-family: 'Arial', serif;
 }
 
 .container {
@@ -25,7 +25,7 @@ section.top-section {
     width: 50%;
 }
 
-.robot>form {
+.robot > form {
     width: 100%;
     text-align: right;
 }
@@ -34,7 +34,7 @@ input.area {
     border-radius: 3px;
     border: 1px solid #adc1d1;
     padding: 10px 15px;
-    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.55);
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.55);
     width: 60%;
 }
 
@@ -46,7 +46,7 @@ button.btn.btn-primary, a.btn.btn-primary {
     color: white;
     text-transform: uppercase;
     font-weight: bold;
-    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.55);
+    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.55);
     font-size: 12px;
 }
 
@@ -87,7 +87,7 @@ td.green, td.red {
     text-align: center;
 }
 
-tr.boldtext {
+tr.bold-text {
     background-color: #adc1d1;
 }
 
@@ -105,26 +105,33 @@ td.number {
     .header {
         justify-content: center;
     }
+
     .robot {
         width: 100%;
         margin-top: 20px;
     }
-    .robot>form {
+
+    .robot > form {
         text-align: center;
     }
+
     table {
         font-size: 12px;
     }
+
     .description hr {
         display: none;
     }
-    .description>h1 {
+
+    .description > h1 {
         text-align: center;
     }
+
     .description > h5 {
         margin-bottom: 10px;
         font-size: 16px;
     }
+
     .description {
         font-size: 14px;
         line-height: 24px;
@@ -135,28 +142,35 @@ td.number {
     section.top-section {
         margin: 30px 0 10px;
     }
+
     button.btn.btn-primary, a.btn.btn-primary {
         display: block;
     }
+
     button.btn.btn-primary {
         width: 100%;
         margin-top: 20px;
         margin-left: 0;
     }
+
     a.btn.btn-primary {
         text-align: center;
         margin-top: 10px;
         margin-right: 0;
     }
+
     input.area {
         width: -moz-available;
     }
+
     table {
         display: none;
     }
+
     .logo > a {
         display: block;
     }
+
     .logo > a > img {
         width: 100%;
         height: auto;

@@ -9,7 +9,9 @@
             "email": "Elmir1993Elmir@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+      "ext-curl": "*"
+    },
     "autoload": {
         "psr-4": {
             "classes\\":"classes/"

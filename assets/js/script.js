@@ -4,11 +4,12 @@ $(document).ready(function () {
         event.preventDefault();
 
         function funcBefore() {
-            $('#result').text("Ожидание запроса...");
+            $('#result').text("Loading...");
         }
 
         function funcSuccess(result) {
             $('#result').html(result);
+            $('hr.line').remove();
         }
 
         $.ajax({
