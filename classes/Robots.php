@@ -2,6 +2,8 @@
 
 namespace classes;
 
+use RuntimeException;
+
 /**
  * Class Robots
  * @package classes
@@ -13,6 +15,7 @@ class Robots
      */
     public $url;
 
+
     /**
      * Robots constructor.
      *
@@ -22,6 +25,7 @@ class Robots
     {
         $this->url = $url;
     }
+
 
     /**
      * Link validation
@@ -44,6 +48,7 @@ class Robots
         return $this->url;
     }
 
+
     /**
      * Returns the content of the "robots.txt" file
      *
@@ -56,6 +61,7 @@ class Robots
 
         return curl_exec($curl);
     }
+
 
     /**
      * Get the server response code.
@@ -72,17 +78,50 @@ class Robots
 
 
     /**
-     * @param string $content
-     * @param string $fileDirection
+     * @param string $tempDir
      *
      * @return float
      */
-    public function getRobotSize(string $content, string $fileDirection): float
+    public function getRobotSize(string $tempDir): float
     {
-        $robot = fopen($fileDirection, 'wb');
-        fwrite($robot, $content);
+        if (!is_dir($tempDir) && !mkdir($concurrentDirectory = $tempDir, 0700) && !is_dir($concurrentDirectory)) {
+            throw new RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+        }
+
+        $robot = fopen($tempDir . 'robots.txt', 'wb');
+        fwrite($robot, $this->getRobotsContent());
         fclose($robot);
 
-        return round(filesize($fileDirection) / 1024, 3);
+        $robotsSize = round(filesize($tempDir . 'robots.txt') / 1024, 3);
+
+        /**
+         * Removing the temporary file "/temp/robots.txt"
+         */
+        unlink($tempDir . 'robots.txt');
+        rmdir($tempDir);
+
+        return $robotsSize;
+    }
+
+
+    /**
+     * Number of "Host" values in "robots.txt"
+     *
+     * @return int
+     */
+    public function getCountHost(): int
+    {
+        return substr_count('Host:', $this->getRobotsContent());
+    }
+
+
+    /**
+     * Number of "Sitemap" in "robots.txt"
+     *
+     * @return int
+     */
+    public function getCountSitemap(): int
+    {
+        return substr_count('Sitemap:', $this->getRobotsContent());
     }
 }

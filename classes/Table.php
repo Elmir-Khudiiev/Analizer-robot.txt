@@ -8,7 +8,6 @@ namespace classes;
  */
 class Table
 {
-
     /**
      * @param string $robotsUrl
      * @param string $robotsContent
@@ -19,7 +18,7 @@ class Table
      *
      * @return string
      */
-    public function viewTable(
+    public function generateReportTable(
         string $robotsUrl,
         string $robotsContent,
         int    $countHost,
@@ -36,37 +35,37 @@ class Table
             <table class="table">
                 <tr class="bold-text">
                     <td>№<br></td>
-                    <td>Название проверки</td>
-                    <td>Статус</td>
+                    <td>Check name</td>
+                    <td>Status</td>
                     <td></td>
-                    <td>Текущее состояние</td>
+                    <td>Current state</td>
                 </tr>
                 <tr>
                     <td rowspan="2" class="number">1</td>
-                    <td rowspan="2">Проверка наличия файла robots.txt
+                    <td rowspan="2">Checking for a robots.txt file
                     </td>
                     <td rowspan="2" class="green">OK</td>
-                    <td>Состояние</td>
-                    <td>Файл robots.txt присутствует</td>
+                    <td>Condition</td>
+                    <td>Robots.txt file present</td>
                 </tr>
                 <tr>
-                    <td>Рекомендации</td>
-                    <td>Доработки не требуются</td>
+                    <td>Recommendations</td>
+                    <td>No modifications required</td>
                 </tr>';
         } else {
             $resultTable .= '
             <table class="table">
                 <tr>
                     <td rowspan="2" class="number">1</td>
-                    <td rowspan="2">Проверка наличия файла robots.txt
+                    <td rowspan="2">Checking for a robots.txt file
                     </td>
-                    <td rowspan="2" class="red">Ошибка</td>
-                    <td>Состояние</td>
-                    <td>Файл robots.txt отсутствует</td>
+                    <td rowspan="2" class="red">Error</td>
+                    <td>Condition</td>
+                    <td>Robots.txt file is missing</td>
                 </tr>
                 <tr>
-                    <td>Рекомендации</td>
-                    <td>Создать файл robots.txt и разместить его на сайте.</td>
+                    <td>Recommendations</td>
+                    <td>Create a robots.txt file and place it on the site.</td>
                 </tr>
             </table>';
 
@@ -77,55 +76,55 @@ class Table
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">2</td>
-                <td rowspan="2">Проверка указания директивы Host</td>
+                <td rowspan="2">Checking for the Host directive</td>
                 <td rowspan="2" class="green">OK</td>
-                <td>Состояние</td>
-                <td>Директива Host указана</td>
+                <td>Condition</td>
+                <td>Host directive specified</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Доработки не требуются</td>
+                <td>Recommendations</td>
+                <td>No modifications required</td>
             </tr>';
 
             if ($countHost > 1) {
                 $resultTable .= '
                     <tr>
                         <td rowspan="2" class="number">3</td>
-                        <td rowspan="2">Проверка количества директив Host, прописанных в файле</td>
-                        <td rowspan="2" class="red">Ошибка</td>
-                        <td>Состояние</td>
-                        <td>В файле прописано несколько директив Host</td>
+                        <td rowspan="2">Checking the number of Host directives written in the file.</td>
+                        <td rowspan="2" class="red">Error</td>
+                        <td>Condition</td>
+                        <td>The file contains several Host directives</td>
                     </tr>
                     <tr>
-                        <td>Рекомендации</td>
-                        <td>Директива Host должна быть указана в файле толоко 1 раз. Необходимо удалить все дополнительные директивы Host и оставить только 1, корректную и соответствующую основному зеркалу сайта.</td>
+                        <td>Recommendations</td>
+                        <td>The Host directive must be specified only once in the file. It is necessary to remove all additional Host directives and leave only 1, correct and corresponding to the main site mirror.</td>
                     </tr>';
             } else {
                 $resultTable .= '
                     <tr>
                         <td rowspan="2" class="number">3</td>
-                        <td rowspan="2">Проверка количества директив Host, прописанных в файле</td>
+                        <td rowspan="2">Checking the number of Host directives written in the file.</td>
                         <td rowspan="2" class="green">OK</td>
-                        <td>Состояние</td>
-                        <td>В файле прописана 1 директива Host</td>
+                        <td>Condition</td>
+                        <td>The file contains 1 Host directive</td>
                     </tr>
                     <tr>
-                        <td>Рекомендации</td>
-                        <td>Доработки не требуются</td>
+                        <td>Recommendations</td>
+                        <td>No modifications required</td>
                     </tr>';
             }
         } else {
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">2</td>
-                <td rowspan="2">Проверка указания директивы Host</td>
-                <td rowspan="2" class="red">Ошибка</td>
-                <td>Состояние</td>
-                <td>В файле robots.txt не указана директива Host</td>
+                <td rowspan="2">Checking for the Host directive</td>
+                <td rowspan="2" class="red">Error</td>
+                <td>Condition</td>
+                <td>Host directive is missing in robots.txt file</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Для того, чтобы поисковые системы знали, какая версия сайта является основных зеркалом, необходимо прописать адрес основного зеркала в директиве Host. В данный момент это не прописано. Необходимо добавить в файл robots.txt директиву Host. Директива Host задётся в файле 1 раз, после всех правил.</td>
+                <td>Recommendations</td>
+                <td>In order for the search engines to know which version of the site is the main mirror, it is necessary to register the address of the main mirror in the Host directive. At the moment, this is not spelled out. You need to add the Host directive to your robots.txt file. The Host directive is specified in the file 1 time, after all the rules.</td>
             </tr>';
         }
 
@@ -133,27 +132,27 @@ class Table
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">4</td>
-                <td rowspan="2">Проверка размера файла robots.txt</td>
+                <td rowspan="2">Checking robots.txt file size</td>
                 <td rowspan="2" class="green">OK</td>
-                <td>Состояние</td>
-                <td>Размер файла robots.txt составляет ' . $robotsSize . ' кб, что находится в пределах допустимой нормы</td>
+                <td>Condition</td>
+                <td>The robots.txt file size is ' . $robotsSize . ' kb, what is within acceptable limits.</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Доработки не требуются</td>
+                <td>Recommendations</td>
+                <td>No modifications required</td>
             </tr>';
         } else {
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">4</td>
-                <td rowspan="2">Проверка размера файла robots.txt</td>
-                <td rowspan="2" class="red">Ошибка</td>
-                <td>Состояние</td>
-                <td>Размера файла robots.txt составляет ' . $robotsSize . ' кб, что превышает допустимую норму</td>
+                <td rowspan="2">Checking robots.txt file size</td>
+                <td rowspan="2" class="red">Error</td>
+                <td>Condition</td>
+                <td>The robots.txt file size is ' . $robotsSize . ' kb, which exceeds the permissible rate.</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Максимально допустимый размер файла robots.txt составляем 32 кб. Необходимо отредактировть файл robots.txt таким образом, чтобы его размер не превышал 32 Кб.</td>
+                <td>Recommendations</td>
+                <td>The maximum size for a robots.txt file is 32 kb. You need to edit your robots.txt file so that its size does not exceed 32 KB.</td>
             </tr>';
         }
 
@@ -161,27 +160,27 @@ class Table
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">5</td>
-                <td rowspan="2">Проверка указания директивы Sitemap</td>
+                <td rowspan="2">Checking the Sitemap directive</td>
                 <td rowspan="2" class="green">OK</td>
-                <td>Состояние</td>
-                <td>Директива Sitemap указана</td>
+                <td>Condition</td>
+                <td>Sitemap directive specified</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Доработки не требуются</td>
+                <td>Recommendations</td>
+                <td>No modifications required</td>
             </tr>';
         } else {
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">5</td>
-                <td rowspan="2">Проверка указания директивы Sitemap</td>
-                <td rowspan="2" class="red">Ошибка</td>
-                <td>Состояние</td>
-                <td>В файле robots.txt не указана директива Sitemap</td>
+                <td rowspan="2">Checking the Sitemap directive</td>
+                <td rowspan="2" class="red">Error</td>
+                <td>Condition</td>
+                <td>Sitemap directive not specified in robots.txt file</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Добавить в файл robots.txt директиву Sitemap.</td>
+                <td>Recommendations</td>
+                <td>Add the Sitemap directive to the robots.txt file.</td>
             </tr>';
         }
 
@@ -189,27 +188,27 @@ class Table
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">6</td>
-                <td rowspan="2">Проверка кода ответа сервера для файла robots.txt</td>
+                <td rowspan="2">Checking the server response code for a robots.txt file</td>
                 <td rowspan="2" class="green">OK</td>
-                <td>Состояние</td>
-                <td>Файл robots.txt отдаёт код ответа сервера 200</td>
+                <td>Condition</td>
+                <td>Robots.txt file returns server response code 200</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Доработки не требуются</td>
+                <td>Recommendations</td>
+                <td>No modifications required</td>
             </tr>';
         } else {
             $resultTable .= '
             <tr>
                 <td rowspan="2" class="number">6</td>
-                <td rowspan="2">Проверка кода ответа сервера для файла robots.txt</td>
-                <td rowspan="2" class="red">Ошибка</td>
-                <td>Состояние</td>
-                <td>При обращении к файлу robots.txt сервер возвращает код ответа ' . $responseServerCode . '</td>
+                <td rowspan="2">Checking the server response code for a robots.txt file</td>
+                <td rowspan="2" class="red">Error</td>
+                <td>Condition</td>
+                <td>When accessing the robots.txt file, the server returns a response code ' . $responseServerCode . '</td>
             </tr>
             <tr>
-                <td>Рекомендации</td>
-                <td>Файл robots.txt должны отдавать код ответа 200, иначе файл не будет обрабатываться. Необходимо настроить сайт таким образом, чтобы при обращении к файлу robots.txt сервер возвращает код ответа 200.</td>
+                <td>Recommendations</td>
+                <td>The robots.txt file must return a response code of 200, otherwise the file will not be processed. It is necessary to configure the site so that when accessing the robots.txt file, the server returns a response code of 200.</td>
             </tr>
             </table>';
         }

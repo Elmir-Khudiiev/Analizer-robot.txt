@@ -206,7 +206,8 @@ class PHPExcel_Shared_OLE
         // in OLE_ChainedBlockStream::stream_open().
         // Object is removed from self::$instances in OLE_Stream::close().
         $GLOBALS['_OLE_INSTANCES'][] = $this;
-        $instanceId = end(array_keys($GLOBALS['_OLE_INSTANCES']));
+        $array = array_keys($GLOBALS['_OLE_INSTANCES']);
+        $instanceId = end($array);
 
         $path = 'ole-chainedblockstream://oleInstanceId=' . $instanceId;
         if ($blockIdOrPps instanceof PHPExcel_Shared_OLE_PPS) {
@@ -285,7 +286,7 @@ class PHPExcel_Shared_OLE
                     $pps = new PHPExcel_Shared_OLE_PPS_File($name);
                     break;
                 default:
-                    continue;
+                    continue 2;
             }
             fseek($fh, 1, SEEK_CUR);
             $pps->Type    = $type;
@@ -442,7 +443,7 @@ class PHPExcel_Shared_OLE
     public static function Asc2Ucs($ascii)
     {
         $rawname = '';
-        for ($i = 0; $i < strlen($ascii); ++$i) {
+        for ($i = 0, $iMax = strlen($ascii); $i < $iMax; ++$i) {
             $rawname .= $ascii{$i} . "\x00";
         }
         return $rawname;
