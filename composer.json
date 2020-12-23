@@ -10,7 +10,8 @@
         }
     ],
     "require": {
-      "ext-curl": "*"
+      "ext-curl": "*",
+        "phpoffice/phpexcel": "^1.8"
     },
     "autoload": {
         "psr-4": {

@@ -15,7 +15,6 @@ class Robots
      */
     public $url;
 
-
     /**
      * Robots constructor.
      *
@@ -25,7 +24,6 @@ class Robots
     {
         $this->url = $url;
     }
-
 
     /**
      * Link validation
@@ -48,7 +46,6 @@ class Robots
         return $this->url;
     }
 
-
     /**
      * Returns the content of the "robots.txt" file
      *
@@ -62,7 +59,6 @@ class Robots
         return curl_exec($curl);
     }
 
-
     /**
      * Get the server response code.
      *
@@ -75,7 +71,6 @@ class Robots
 
         return $code[1];
     }
-
 
     /**
      * @param string $tempDir
@@ -103,7 +98,6 @@ class Robots
         return $robotsSize;
     }
 
-
     /**
      * Number of "Host" values in "robots.txt"
      *
@@ -113,7 +107,6 @@ class Robots
     {
         return substr_count('Host:', $this->getRobotsContent());
     }
-
 
     /**
      * Number of "Sitemap" in "robots.txt"
