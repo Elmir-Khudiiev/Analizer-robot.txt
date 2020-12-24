@@ -71,7 +71,7 @@ class Table
         $this->responseServerCode = $responseServerCode;
     }
 
-    public function setHeaders()
+    public function setHeaders(): void
     {
         header("Expires: Mon, 1 Apr 1974 05:00:00 GMT");
         header("Last-Modified: " . gmdate("D,d M YH:i:s") . " GMT");
@@ -88,7 +88,7 @@ class Table
     {
         $resultTable = '
             <div class="button-block">
-                <form action="../router.php">
+                <form method="post" action="../router.php">
                     <input type="hidden" value="' . $this->robotsUrl . '" name="url" >
                     <input type="hidden" value="1" name="excel_report" >
                     <button class="btn btn-primary" role="submit">Save report</button>

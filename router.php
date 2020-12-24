@@ -10,23 +10,22 @@ if (empty($_POST['url'])) {
     die();
 }
 
-$robots = new Robots($_POST['url']);
-
-$table = new Table(
-    $robots->getCorrectURL(),
-    $robots->getRobotsContent(),
-    $robots->getCountHost(),
-    $robots->getCountSitemap(),
-    $robots->getRobotSize(__DIR__ . '/temp/'),
-    $robots->getResponseServerCode()
-);
-
 try {
+    $robots = new Robots($_POST['url']);
+
+    $table = new Table(
+        $robots->getCorrectURL(),
+        $robots->getRobotsContent(),
+        $robots->getCountHost(),
+        $robots->getRobotSize(__DIR__ . '/temp/'),
+        $robots->getCountSitemap(),
+        $robots->getResponseServerCode()
+    );
+
     echo $table->generateReportHtmlTable();
 } catch (Exception $exception) {
     echo $exception->getMessage();
 }
-
 
 if (!empty($_POST['excel_report'])) {
     try {

@@ -95,6 +95,20 @@ td.number {
     text-align: center;
 }
 
+.button-block {
+    display: flex;
+
+}
+
+.button-block > form {
+    width: max-content;
+    margin-right: 10px;
+}
+
+.button-block > form > button {
+    margin-left: 0 !important;
+}
+
 @media (min-width: 768px) and (max-width: 995px) {
     input.area {
         width: 45%;
@@ -139,6 +153,16 @@ td.number {
 }
 
 @media (max-width: 520px) {
+    .button-block {
+        display: block;
+    }
+
+    .button-block > form {
+        width: auto;
+        margin-right: 0;
+    }
+
+
     section.top-section {
         margin: 30px 0 10px;
     }

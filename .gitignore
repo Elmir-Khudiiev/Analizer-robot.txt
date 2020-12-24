@@ -1,6 +1,6 @@
 # IDE files
-.vscode/
-.idea/
+/.vscode
+/.idea
 
 # Unnecessary folders
 /vendor

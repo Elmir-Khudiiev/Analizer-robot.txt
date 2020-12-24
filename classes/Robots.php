@@ -105,7 +105,7 @@ class Robots
      */
     public function getCountHost(): int
     {
-        return substr_count('Host:', $this->getRobotsContent());
+        return substr_count($this->getRobotsContent(), 'Host:');
     }
 
     /**
@@ -115,6 +115,6 @@ class Robots
      */
     public function getCountSitemap(): int
     {
-        return substr_count('Sitemap:', $this->getRobotsContent());
+        return substr_count($this->getRobotsContent(), 'Sitemap:');
     }
 }
